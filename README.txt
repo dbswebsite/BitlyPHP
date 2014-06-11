@@ -1,19 +1,37 @@
 
-This is a very simple PHP library for interacting with the v3 bit.ly api (only deals with JSON format, but supports new OAuth endpoints)
+This is a very simple PHP library for interacting with the v3 bit.ly api (only deals with JSON format, but supports new OAuth endpoints). This version removes a number of interesting features and concentrates on URL shortening and basic WordPress integration. Specifically, the shortened URL is cached as a WordPress transient.
 
 ==============
 REQUIREMENTS:
 ==============
 
-curl
+php and curl
 
 ======
 USAGE:
 ======
 
 This is a modified version adapted to WordPress, where there is a simple need to
-shorten a URL. The URL is then cached in the WordPress database using WordPress
-transients API.
+shorten a URL. The URL is then cached in the WordPress database using
+WordPress transients API.
+
+Copy and paste into functions.php in the theme directory, or require the script like: require 'bitly_wp.php'. Then just echo the results like:
+
+ <?php echo get_bitly_short_url( WP_SITEURL . $_SERVER['REQUEST_URI'] ) ?>
+
+
+=============
+SPECIAL NOTE:
+=============
+
+To use the new OAuth endpoints, you must first obtain an access token for a user. You do this by passing the user off to bit.ly to approve your apps access to their account...and then you use the return code along with the bitly_oauth_access_token method to obtain the actual bitly access token:
+
+1. Present the user with a link as such <a href=" https://bit.ly/oauth/authorize?client_id=<?= bitly_clientid ?>&redirect_uri=THE_URL_YOU_WANT_BITLY_TO_REDIRECT_TO_WHEN_APP_IS_APPROVED_BY_USER">Authorize giftabit</a>
+
+2. a code ($_REQUEST['code']) will be supplied as a param to the url Bit.ly redirects to...so you can then execute $results = bitly_oauth_access_token($_REQUEST['code'], 'THE_URL_YOU_WANT_BITLY_TO_REDIRECT_TO_WHEN_APP_IS_APPROVED_BY_USER');
+
+3. If everything goes correctly, you should now have a $results['access_token'] value that you can use with the oauth requests for that user.
+>>>>>>> 499fc07d933bee1e47af36490b812852c7857bab
 
 ==============
 SPECIAL THANKS:
