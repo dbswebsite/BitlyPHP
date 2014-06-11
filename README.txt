@@ -5,81 +5,16 @@ This is a very simple PHP library for interacting with the v3 bit.ly api (only d
 REQUIREMENTS:
 ==============
 
-PHP, Curl, JSON
+php and curl
 
 ======
 USAGE:
 ======
 
-1. Simply download the bitly.php file and include it in your project directory
+Copy and paste into functions.php in the theme directory, or require the script like: require 'bitly_wp.php'. Then just echo the results like:
 
-2. Edit the first few lines of the file to use your own Bitly login and keys
+ <?php echo get_bitly_short_url( WP_SITEURL . $_SERVER['REQUEST_URI'] ) ?>
 
-3. Make sure to include the file whenever you want to access the bitly api functionality... include_once('bitly.php');
-
-4. Use any of the functions as such:
-
-$results = bitly_v3_shorten('http://knowabout.it', 'j.mp');
-
-$results = bitly_v3_expand('dYhyia');
-
-$results = bitly_v3_expand(array('http://bit.ly/dYhyia','http://j.mp/dYhyia'));
-
-$result = bitly_v3_validate('USERS_LOGIN','USERS_APIKEY');
-
-$results = bitly_v3_clicks('dYhyia');
-
-$results = bitly_v3_clicks(array('dYhyia','http://bit.ly/dYhyia'));
-
-$results = bitly_v3_referrers('grqSlY');
-
-$results = bitly_v3_countries('grqSlY');
-
-$results = bitly_v3_clicks_by_minute(array('grqSlY','dYhyia'));
-
-$results = bitly_v3_clicks_by_day(array('grqSlY','dYhyia'));
-
-$results = bitly_v3_bitly_pro_domain('nyti.ms');
-
-$results = bitly_v3_lookup('http://knowabout.it');
-
-$results = bitly_v3_lookup(array('http://knowabout.it','http://blog.botfu.com'));
-
-$results = bitly_v3_authenticate('USERS_LOGIN','USERS_PASSWORD');
-
-$results = bitly_v3_info(array('grqSlY','dYhyia'));
-
-$results = bitly_oauth_access_token('CODE_ASSIGNED_BY_BITLY', 'THE_URL_YOU_WANT_BITLY_TO_REDIRECT_TO_WHEN_APP_IS_APPROVED_BY_USER');
-
-$results = bitly_v3_user_clicks('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_user_referrers('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_user_countries('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_user_realtime_links('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_highvalue('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_search('USERS_ACCESS_TOKEN', 'awesome');
-
-$results = bitly_v3_realtime_bursting_phrases('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_realtime_hot_phrases('USERS_ACCESS_TOKEN');
-
-$results = bitly_v3_realtime_clickrate('USERS_ACCESS_TOKEN', 'awesome');
-
-$results = bitly_v3_link_info('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
-
-$results = bitly_v3_link_content('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
-
-$results = bitly_v3_link_category('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
-
-$results = bitly_v3_link_social('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
-
-$results = bitly_v3_link_location('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
-
-$results = bitly_v3_link_language('USERS_ACCESS_TOKEN', 'http://bit.ly/S4qgbT');
 
 =============
 SPECIAL NOTE:
