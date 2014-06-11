@@ -1,5 +1,5 @@
 
-This is a very simple PHP library for interacting with the v3 bit.ly api (only deals with JSON format, but supports new OAuth endpoints)
+This is a very simple PHP library for interacting with the v3 bit.ly api (only deals with JSON format, but supports new OAuth endpoints). This version removes a number of interesting features and concentrates on URL shortening and basic WordPress integration. Specifically, the shortened URL is cached as a WordPress transient.
 
 ==============
 REQUIREMENTS:
